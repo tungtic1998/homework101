@@ -223,10 +223,9 @@ function ex17() {
 
 function ex19() {
 
-    var a = prompt("Enter number: "); // tổng từ 1 đến n không sử dụng vòng lặp
-    var x = Number(a);
-    var y = x * (x + 1) / 2;
-        return y;
+    var a = Number(prompt("Enter number: ")); // tổng từ 1 đến n không sử dụng vòng lặp
+    var result = a * (a + 1) / 2;
+        return result;
 }
 
 function ex21() {
@@ -289,7 +288,7 @@ function ex24() {
             }
         }
     }
-    console.log(newarrs)
+    console.log(newarrs);
 }
 
 function ex25() {
@@ -326,4 +325,154 @@ function ex26() {
         result.push(Math.max.apply(Math, smaller), Math.min.apply(Math, larger));
         console.log("Giá trị gần nhất là: " + result);
     }
+}
+
+function ex27() {
+    var students = [
+        {
+            id: "T3HXX1",
+            firstName: "tung",
+            lastName: "doAn HoAnG"
+        },
+        {
+            id: "T3HXX2",
+            firstName: "nO",
+            lastName: "SHIt"
+        },
+        {
+            id: "T3HXX5",
+            firstName: "hIgH",
+            lastName: "aS a Kite" 
+        }];
+
+    var results = students.filter(student => student.firstName.length >= 3)
+        .map(
+            student => {
+                return {
+                    id: student.id,
+                    firstName: student.firstName.toLowerCase().replace(student.firstName[0], student.firstName[0].toUpperCase()),
+                    lastName: student.lastName.toLowerCase().split(" ").map(item => item[0].toUpperCase() + item.slice(1)).join(" ")
+                }});
+
+    console.log(results);
+}
+
+function ex28() {
+    var students = [
+        {
+            id: "T3HXX1",
+            firstName: "Tung",
+            lastName: "Doan Hoang"
+        },
+        {
+            id: "T3HXX2",
+            firstName: "No",
+            lastName: "Shit Motherfucker"
+        },
+        {
+            id: "T3HXX5",
+            firstName: "High",
+            lastName: "As a Kite" 
+        },
+        {
+            id: "T3HXX1",
+            firstName: "No",
+            lastName: "Shit Cunt"
+        }
+    ]
+    
+    var results = students.filter(student => student.lastName.split(" ")[0] === "Shit");
+    console.log(results);
+}
+
+function ex29() {
+    var students = [
+        {
+            id: "T3HXX1",
+            firstName: "Tung",
+            lastName: "Doan Hoang"
+        },
+        {
+            id: "T3HXX2",
+            firstName: "No",
+            lastName: "Shit Motherfucker"
+        },
+        {
+            id: "T3HXX5",
+            firstName: "High",
+            lastName: "As a Kite" 
+        },
+        {
+            id: "T3HXX1",
+            firstName: "No",
+            lastName: "Shit Cunt"
+        }
+    ];
+    
+    var sortByName = students.slice(0)
+        .sort(
+            function(a,b) {
+                var x = a.firstName;
+                var y = b.firstName;
+                if (x < y) {
+                    return -1;
+                } else if (x > y) {
+                    return 1;
+                } else {
+                    return 0;
+                }});
+    console.log(sortByName);
+}
+
+function ex30() {
+    var numbers = [1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1]
+    // var numbers =[1,1,1,1,1,1,]
+    var resultarr = []
+
+    for (var i = 0; i < numbers.length; i++) {
+        if (numbers[i] < Math.max(...numbers)) {
+            resultarr.push(numbers[i])
+        }
+    }
+    var result = Math.max(...resultarr)
+    if (result === -Infinity) {
+        console.log(-1)
+    } else {
+        console.log(result)
+    }
+}
+
+function ex31() {
+    var array = [9,1,8,3,4,15,19]
+    var z = 18
+    for (var a = 0; a < array.length; a++) {
+        for (var b = a + 1; b < array.length; b++) {
+            for (var c = b + 1; c < array.length; c++) {
+                if (z == array[a] + array[b] + array[c]) {
+                    var result = "yes";
+                    break;
+                }
+            }
+        }
+    }
+
+    if (result != "yes") {
+        console.log("no")
+    } else {
+        console.log(result)
+    }
+}
+
+function ex32() {
+    var array = [1,3,5,6,8,11,14,18]
+    var b = array
+    var k = Number(prompt("inputnumber: "))
+    var a = []
+    for ( var i = 0; i < array.length; i++) {
+        if (array[i] < k) {
+            a.push(array[i])
+        }
+    }
+    b.splice(a.length, 0, k)
+    console.log(b)
 }
